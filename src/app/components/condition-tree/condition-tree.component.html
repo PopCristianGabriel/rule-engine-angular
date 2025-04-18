@@ -1,0 +1,21 @@
+<div class="node" (click)="select.emit(node)">
+  <ng-container *ngIf="node.type === 'SIMPLE'; else complex">
+    <div class="simple">
+      {{ node.eventType }} {{ node.operator }} {{ node.targetValue }}
+    </div>
+  </ng-container>
+
+  <ng-template #complex>
+    <div class="complex" *ngIf="isComplex(node)">
+      <strong>{{ node.logicalOperator }}</strong>
+
+      <div cdkDropList [cdkDropListData]="node.children" (cdkDropListDropped)="onDrop($event)">
+        <div *ngFor="let child of node.children" cdkDrag>
+          <app-condition-tree [node]="child" (select)="select.emit($event)"></app-condition-tree>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
