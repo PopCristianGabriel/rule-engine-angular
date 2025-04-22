@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConditionTreeComponent } from './condition-tree.component';
+import { DropZoneComponent } from './drop-zone.component';
 
-describe('ConditionTreeComponent', () => {
-  let component: ConditionTreeComponent;
-  let fixture: ComponentFixture<ConditionTreeComponent>;
+describe('DropZoneComponent', () => {
+  let component: DropZoneComponent;
+  let fixture: ComponentFixture<DropZoneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConditionTreeComponent]
+      imports: [DropZoneComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ConditionTreeComponent);
+    fixture = TestBed.createComponent(DropZoneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

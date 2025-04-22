@@ -1,18 +1,8 @@
-.builder-layout {
+.block-list {
   display: flex;
-  gap: 16px;
-}
-
-.left-panel {
-  flex: 2;
-}
-
-.right-panel {
-  flex: 1;
-}
-
-.actions {
-  margin-top: 12px;
-  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+}
+.draggable-block {
+  cursor: grab;
 }

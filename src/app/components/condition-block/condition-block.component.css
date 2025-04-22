@@ -1,0 +1,67 @@
+.condition-block {
+  display: flex; /* changed from inline-block */
+  align-items: center;  /* vertically center */
+  justify-content: center; /* horizontally center */
+  padding: 8px 16px;
+  margin: 6px;
+  font-weight: 500;
+  font-family: monospace;
+  border-radius: 6px;
+  min-height: 48px;
+  min-width: 100px;
+  box-sizing: border-box;
+}
+
+
+/* Color-coded styling based on type (already working, just reminder) */
+.condition-block.event {
+  background-color: #e3f2fd;
+  border-left: 5px solid #2196f3;
+}
+
+.condition-block.logical {
+  background-color: #e8f5e9;
+  border-left: 5px solid #4caf50;
+}
+
+.condition-block.comparison {
+  background-color: #fff8e1;
+  border-left: 5px solid #ff9800;
+}
+
+.condition-block.number {
+  padding: 4px 8px;
+  width: 80px;
+  min-width: 80px;
+  min-height: 40px;
+}
+
+.number-field {
+  width: 50%;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Deep styles for mat-input */
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep .mat-form-field-infix {
+  padding: 0 !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+::ng-deep input.mat-input-element {
+  font-size: 14px;
+  padding: 2px 4px;
+  text-align: center;
+  height: 24px;
+}
+

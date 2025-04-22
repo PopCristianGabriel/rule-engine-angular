@@ -1,50 +1,45 @@
-<div class="builder-layout">
-  <mat-card class="left-panel">
-    <mat-card-title>Rule Tree</mat-card-title>
-
-    <app-condition-tree *ngIf="root as tree" [node]="tree" (select)="onNodeSelected($event)"></app-condition-tree>
-    <div *ngIf="!root">No rule yet. Click add to create one.</div>
-
-    <div class="actions">
-      <button mat-raised-button color="primary" (click)="addSimple()">Add Simple</button>
-      <button mat-raised-button color="accent" (click)="save()">Save</button>
-    </div>
-  </mat-card>
-
-  <mat-card class="right-panel" *ngIf="selectedNode as node">
-    <mat-card-title>Edit Node</mat-card-title>
-
-    <div *ngIf="node.type === 'SIMPLE'">
-      <mat-form-field>
-        <mat-label>Event Type</mat-label>
-        <mat-select [(ngModel)]="node.eventType">
-          <mat-option *ngFor="let type of metadata.eventTypes" [value]="type">{{ type }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Operator</mat-label>
-        <mat-select [(ngModel)]="node.operator">
-          <mat-option *ngFor="let op of metadata.operators" [value]="op">{{ op }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Target</mat-label>
-        <input matInput type="number" [(ngModel)]="node.targetValue" />
-      </mat-form-field>
-    </div>
-
-    <div *ngIf="node.type === 'COMPLEX'">
-      <mat-form-field>
-        <mat-label>Logical Operator</mat-label>
-        <mat-select [(ngModel)]="node.logicalOperator">
-          <mat-option value="AND">AND</mat-option>
-          <mat-option value="OR">OR</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <button mat-raised-button color="warn" (click)="deleteSelected()">Delete</button>
-  </mat-card>
+<h2>🟦 Event Blocks</h2>
+<div class="block-list">
+  <div
+    class="draggable-block"
+    *ngFor="let block of eventBlocks"
+    draggable="true"
+    (dragstart)="handleDragStart($event, block)">
+    <app-condition-block [data]="block"></app-condition-block>
+  </div>
 </div>
+
+<h2>🟩 Logical Operators</h2>
+<div class="block-list">
+  <div
+    class="draggable-block"
+    *ngFor="let block of logicalBlocks"
+    draggable="true"
+    (dragstart)="handleDragStart($event, block)">
+    <app-condition-block [data]="block"></app-condition-block>
+  </div>
+</div>
+
+<h2>🟧 Comparison Operators</h2>
+<div class="block-list">
+  <div
+    class="draggable-block"
+    *ngFor="let block of comparisonBlocks"
+    draggable="true"
+    (dragstart)="handleDragStart($event, block)">
+    <app-condition-block [data]="block"></app-condition-block>
+  </div>
+</div>
+
+<h2>🟨 Number Blocks</h2>
+<div class="block-list">
+  <div
+    class="draggable-block"
+    *ngFor="let block of numberBlocks"
+    draggable="true"
+    (dragstart)="handleDragStart($event, block)">
+    <app-condition-block [data]="block"></app-condition-block>
+  </div>
+</div>
+
+<app-drop-zone></app-drop-zone>

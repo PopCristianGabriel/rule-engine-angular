@@ -1,0 +1,12 @@
+<div class="drop-zone"
+     (dragover)="allowDrop($event)"
+     (drop)="onDrop($event)">
+  <div class ="container" *ngIf="components.length">
+    <div *ngFor="let block of components">
+      <app-condition-block [data]="block"></app-condition-block>
+    </div>
+  </div>
+  <div *ngIf="components.length == 0">
+    Drop condition block here
+  </div>
+</div>
