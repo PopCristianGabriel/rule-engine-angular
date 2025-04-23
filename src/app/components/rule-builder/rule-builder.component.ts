@@ -15,6 +15,7 @@ import {ConditionBlockComponent} from '../condition-block/condition-block.compon
 import {GenericConditionComponent} from '../../models/condition/GenericConditionComponent';
 import {NumberComponent} from '../../models/condition/NumberComponent';
 import {DropZoneComponent} from '../drop-zone/drop-zone.component';
+import {ParantheseComponent} from '../../models/condition/ParantheseComponent';
 
 @Component({
   selector: 'app-rule-builder',
@@ -90,7 +91,14 @@ export class RuleBuilderComponent {
     notEquals.text = '≠';
     notEquals.operator = LogicalOperator.NOT_EQUALS;
 
-    // Add all to the block palette
+    const openParanthese = new ParantheseComponent();
+    openParanthese.text = '(';
+
+    const closedParanthese = new ParantheseComponent();
+    closedParanthese.text = ')';
+
+
+
     allBlocks.push(
       number,
       depositEvent,
@@ -103,12 +111,14 @@ export class RuleBuilderComponent {
       lessThan,
       lessThanOrEqual,
       equals,
-      notEquals
+      notEquals,
+      openParanthese,
+      closedParanthese,
     );
 
     // Group by type
     this.eventBlocks = allBlocks.filter(b => b.blockType === 'event');
-    this.logicalBlocks = allBlocks.filter(b => b.blockType === 'logical');
+    this.logicalBlocks = allBlocks.filter(b => b.blockType === 'logical' || b.blockType === 'parenthese');
     this.comparisonBlocks = allBlocks.filter(b => b.blockType === 'comparison');
     this.numberBlocks = allBlocks.filter(b => b.blockType === 'number');
   }

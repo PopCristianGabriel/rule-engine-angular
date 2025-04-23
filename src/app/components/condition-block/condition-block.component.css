@@ -37,7 +37,7 @@
 }
 
 .number-field {
-  width: 50%;
+  width: 100%;
   height: 50%;
   margin: 0;
   padding: 0;
@@ -63,5 +63,12 @@
   padding: 2px 4px;
   text-align: center;
   height: 24px;
+}
+
+.preview {
+  opacity: 0.2;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 

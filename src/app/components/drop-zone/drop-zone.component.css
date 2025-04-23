@@ -19,3 +19,21 @@
 .drop-zone:hover {
   background-color: #e6f0ff;
 }
+
+
+
+.drop-zone.drag-over {
+  background-color: pink; /* or something fancy */
+  border-color: green;
+}
+
+.drop-zone.drag-over-normal {
+  background-color: #e3f2fd; /* or something fancy */
+  border-color: #42a5f5;
+}
+
+.drop-zone.cdk-drop-list-dragging {
+  opacity: 0.8;
+  border-color: #f44336; /* red hint when dragging */
+}
+

@@ -1,13 +1,13 @@
+<div class="drag-wrapper">
+  <mat-card class="condition-block" [ngClass]="getBlockClass()">
+    <ng-container *ngIf="!isNumberComponent(); else numberBlock">
+      {{ data.text }}
+    </ng-container>
 
-<mat-card class="condition-block" appearance="outlined">
-  <ng-container *ngIf="!isNumberComponent(); else numberBlock">
-    {{ data.text }}
-  </ng-container>
-
-  <ng-template #numberBlock>
-    <mat-form-field appearance="fill" class="number-field">
-      <input matInput type="number" [value]="(getChildComponent(data).value)" (input)="updateValue($event)" />
-    </mat-form-field>
-
-  </ng-template>
-</mat-card>
+    <ng-template #numberBlock>
+      <mat-form-field appearance="fill" class="number-field">
+        <input matInput type="number" [value]="(getChildComponent(data).value)" (input)="updateValue($event)" />
+      </mat-form-field>
+    </ng-template>
+  </mat-card>
+</div>

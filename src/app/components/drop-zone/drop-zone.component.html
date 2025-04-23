@@ -1,8 +1,15 @@
 <div class="drop-zone"
      (dragover)="allowDrop($event)"
+     (dragleave)="dragLeave($event)"
+     [ngClass]="getDropZoneClass()"
      (drop)="onDrop($event)">
   <div class ="container" *ngIf="components.length">
-    <div *ngFor="let block of components">
+    <div
+      *ngFor="let block of components; let i = index"
+      class="dropped-block"
+      cdkDrag
+      (cdkDragEnded)="onDragEnd($event, i)"
+    >
       <app-condition-block [data]="block"></app-condition-block>
     </div>
   </div>

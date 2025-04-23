@@ -3,11 +3,12 @@ import { GenericConditionComponent } from '../../models/condition/GenericConditi
 import { NumberComponent } from '../../models/condition/NumberComponent';
 import {CommonModule, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {MatFormField, MatInput, MatLabel, MatSuffix} from '@angular/material/input';
-import {MatIcon} from '@angular/material/icon';
-import {MatIconButton} from '@angular/material/button';
+import {MatFormField, MatInput} from '@angular/material/input';
 import {EventComponent} from '../../models/condition/EventComponent';
 import {MatCard} from '@angular/material/card';
+import {CdkDrag, CdkDragPreview} from '@angular/cdk/drag-drop';
+import {ParantheseComponent} from '../../models/condition/ParantheseComponent';
+
 
 @Component({
   selector: 'app-condition-block',
@@ -19,13 +20,14 @@ import {MatCard} from '@angular/material/card';
     FormsModule,
     MatInput,
     MatCard,
-    MatFormField
+    MatFormField,
+    CdkDrag,
+    CdkDragPreview
   ],
   styleUrls: ['./condition-block.component.css']
 })
 export class ConditionBlockComponent {
   @Input() data!: GenericConditionComponent;
-  value = 'Clear me';
 
   ngOnInit() {
     if (this.data instanceof NumberComponent) {
@@ -49,5 +51,14 @@ export class ConditionBlockComponent {
     const input = event.target as HTMLInputElement;
     (this.data as any).value = parseFloat(input.value);
     this.data.text = input.value;
+  }
+
+  getBlockClass(): string {
+    if (this.data instanceof NumberComponent) return 'number';
+    if (this.data instanceof EventComponent) return 'event';
+    if (this.data instanceof ParantheseComponent) return 'logical';
+    if ((this.data as any).operator !== undefined) return 'logical';
+    if ((this.data as any).value !== undefined) return 'comparison';
+    return '';
   }
 }
